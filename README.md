@@ -21,17 +21,12 @@ The project uses MediaPipe's hand detection solution to identify 21 hand landmar
 
 ## Usage
 
-**Basic hand tracking:**
-```bash
-python HandTrackingModule.py
-```
-
 **Minimal example:**
 ```bash
 python HandTrackingMin.py
 ```
 
-**Game application:**
+**Game application (recommended):**
 ```bash
 python NewHandTrackingGame.py
 ```
@@ -58,7 +53,10 @@ index_tip = landmark_list[8]   # Index finger tip position
 21 landmarks per hand (0-20):
 - **Fingertips**: 4, 8, 12, 16, 20 (thumb, index, middle, ring, pinky)
 - **Wrist**: 0
-- **Joints**: Various MCP, PIP, DIP joints for each finger
+- **Joints**: Various finger joints:
+  - **MCP** (Metacarpophalangeal): Knuckle joints where fingers connect to hand
+  - **PIP** (Proximal Interphalangeal): Middle joints of each finger
+  - **DIP** (Distal Interphalangeal): Joints closest to fingertips
 
 Use constants for clarity:
 ```python
