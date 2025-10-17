@@ -8,6 +8,7 @@ using MediaPipe's hand detection solution.
 import cv2
 import mediapipe as mp
 import time
+import math
 
 
 class HandDetector:
@@ -102,4 +103,39 @@ class HandDetector:
                     cv2.circle(image, (center_x, center_y), 7, (255, 0, 0), cv2.FILLED)
 
         return landmark_list
+    
+    def find_distance(self, point1, point2, image=None, draw=True):
+        """
+        Calculate Euclidean distance between two points and optionally draw a line.
+        
+        Args:
+            point1 (list): First point [id, x, y] or [x, y].
+            point2 (list): Second point [id, x, y] or [x, y].
+            image: Input image frame (optional, for drawing).
+            draw (bool): Whether to draw line between points.
+            
+        Returns:
+            tuple: (distance, image, [x1, y1, x2, y2])
+        """
+        # Extract coordinates (handle both [id, x, y] and [x, y] formats)
+        if len(point1) == 3:
+            x1, y1 = point1[1], point1[2]
+        else:
+            x1, y1 = point1[0], point1[1]
+            
+        if len(point2) == 3:
+            x2, y2 = point2[1], point2[2]
+        else:
+            x2, y2 = point2[0], point2[1]
+        
+        # Calculate Euclidean distance
+        distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+        
+        # Draw line between points if requested and image provided
+        if draw and image is not None:
+            cv2.line(image, (x1, y1), (x2, y2), (255, 0, 255), 3)
+            cv2.circle(image, (x1, y1), 5, (255, 0, 0), cv2.FILLED)
+            cv2.circle(image, (x2, y2), 5, (255, 0, 0), cv2.FILLED)
+        
+        return distance, image, [x1, y1, x2, y2]
  

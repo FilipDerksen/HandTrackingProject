@@ -46,6 +46,10 @@ landmark_list = detector.find_position(image)
 # Access specific landmarks
 thumb_tip = landmark_list[4]  # Thumb tip position
 index_tip = landmark_list[8]   # Index finger tip position
+
+# Calculate distance between landmarks
+distance, image, coords = detector.find_distance(thumb_tip, index_tip, image, draw=True)
+print(f"Distance: {distance:.1f} pixels")
 ```
 
 ## Hand Landmarks
