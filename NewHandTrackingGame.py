@@ -87,7 +87,7 @@ def main():
             break
             
         # Detect hands without drawing landmarks (for game performance)
-        image = detector.find_hands(image, draw=False)
+        image = detector.find_hands(image, draw=True)
         landmark_list = detector.find_position(image, draw=False)
         
         # Process hand landmarks if detected
