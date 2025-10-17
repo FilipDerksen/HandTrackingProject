@@ -6,6 +6,10 @@ Real-time hand detection and tracking using MediaPipe and OpenCV.
 
 The project uses MediaPipe's hand detection solution to identify 21 hand landmarks in real-time video. Each hand landmark represents a specific point on the hand (fingertips, joints, wrist) with pixel coordinates that can be used for gesture recognition and interactive applications.
 
+## Demo
+
+![Demo](assets/HTP_opt.gif)
+
 ## Setup
 
 1. **Create virtual environment**
