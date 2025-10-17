@@ -8,7 +8,7 @@ The project uses MediaPipe's hand detection solution to identify 21 hand landmar
 
 ## Demo
 
-![Demo](assets/HTP_opt.gif)
+![Demo](assets/demo.gif)
 
 ## Setup
 
