@@ -70,3 +70,46 @@ MIDDLE_FINGER_TIP = 12
 RING_FINGER_TIP = 16
 PINKY_TIP = 20
 ```
+
+## Testing
+
+The project includes comprehensive unit tests to ensure reliability and catch edge cases.
+
+### Running Tests
+
+```bash
+# Run all tests
+python -m pytest tests/ -v
+
+# Run specific test files
+python -m pytest tests/test_distance_calculation.py -v
+python -m pytest tests/test_hand_detection.py -v
+
+# Run with coverage report
+python -m pytest tests/ --cov=. --cov-report=html
+```
+
+### Test Coverage
+
+- **32 comprehensive test cases** covering all HandDetector methods
+- **Distance calculation tests**: 11 test cases for `find_distance()` method
+- **Hand detection tests**: 7 test cases for `find_hands()` and `find_position()` methods  
+- **Edge case testing**: Invalid inputs, boundary conditions, error handling
+- **Mock data approach**: Tests run without requiring a camera
+
+### Test Organization
+
+```
+tests/
+├── test_hand_detector.py      # Core HandDetector class tests
+├── test_distance_calculation.py  # Distance method specific tests
+└── test_hand_detection.py     # Hand detection specific tests
+```
+
+### What's Tested
+
+- ✅ **Distance calculation** with various point formats and edge cases
+- ✅ **Hand detection** with mock landmarks and invalid inputs
+- ✅ **Error handling** for None inputs, invalid hand numbers, missing results
+- ✅ **Edge cases** like zero distance, very large/small coordinates
+- ✅ **Input validation** for image formats and parameter bounds

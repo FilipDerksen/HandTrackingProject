@@ -57,6 +57,13 @@ class HandDetector:
         Returns:
             image: Image with hand landmarks drawn (if draw=True).
         """
+        # Check for valid image input
+        if image is None:
+            raise ValueError("Image cannot be None")
+        
+        if len(image.shape) != 3 or image.shape[2] != 3:
+            raise ValueError("Image must be a 3-channel BGR image")
+        
         # Convert BGR to RGB for MediaPipe processing
         image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         self.results = self.hands.process(image_rgb)
@@ -85,22 +92,29 @@ class HandDetector:
         """
         landmark_list = []
 
-        if self.results.multi_hand_landmarks:
-            # Get the specified hand
-            hand_landmarks = self.results.multi_hand_landmarks[hand_number]
+        # Check if results exist and hands are detected
+        if not hasattr(self, 'results') or not self.results.multi_hand_landmarks:
+            return landmark_list
+        
+        # Check if requested hand number exists
+        if hand_number >= len(self.results.multi_hand_landmarks):
+            return landmark_list
+        
+        # Get the specified hand
+        hand_landmarks = self.results.multi_hand_landmarks[hand_number]
 
-            # Extract landmark positions
-            for landmark_id, landmark in enumerate(hand_landmarks.landmark):
-                height, width, channels = image.shape
-                # Convert normalized coordinates to pixel coordinates
-                center_x = int(landmark.x * width)
-                center_y = int(landmark.y * height)
-                
-                landmark_list.append([landmark_id, center_x, center_y])
-                
-                # Draw circle at landmark position if requested
-                if draw:
-                    cv2.circle(image, (center_x, center_y), 7, (255, 0, 0), cv2.FILLED)
+        # Extract landmark positions
+        for landmark_id, landmark in enumerate(hand_landmarks.landmark):
+            height, width, channels = image.shape
+            # Convert normalized coordinates to pixel coordinates
+            center_x = int(landmark.x * width)
+            center_y = int(landmark.y * height)
+            
+            landmark_list.append([landmark_id, center_x, center_y])
+            
+            # Draw circle at landmark position if requested
+            if draw:
+                cv2.circle(image, (center_x, center_y), 7, (255, 0, 0), cv2.FILLED)
 
         return landmark_list
     
