@@ -128,4 +128,10 @@ pytest tests/ -v
 
 # Check code quality
 flake8 .
+
+# Security scan
+bandit -r .
+
+# Check documentation style
+pydocstyle HandTrackingModule.py
 ```
