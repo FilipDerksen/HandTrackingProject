@@ -112,11 +112,11 @@ tests/
 
 ### What's Tested
 
-- ✅ **Distance calculation** with various point formats and edge cases
-- ✅ **Hand detection** with mock landmarks and invalid inputs
-- ✅ **Error handling** for None inputs, invalid hand numbers, missing results
-- ✅ **Edge cases** like zero distance, very large/small coordinates
-- ✅ **Input validation** for image formats and parameter bounds
+- **Distance calculation** with various point formats and edge cases
+- **Hand detection** with mock landmarks and invalid inputs
+- **Error handling** for None inputs, invalid hand numbers, missing results
+- **Edge cases** like zero distance, very large/small coordinates
+- **Input validation** for image formats and parameter bounds
 
 ## CI/CD Pipeline
 
@@ -124,21 +124,21 @@ The project includes a comprehensive GitHub Actions CI/CD pipeline that automati
 
 ### What the Pipeline Does
 
-- **🧹 Code Quality**: Runs flake8 linting to ensure PEP 8 compliance
-- **🧪 Testing**: Executes all 32 tests across Python 3.8, 3.9, 3.10, 3.11
-- **📊 Coverage**: Generates test coverage reports and uploads to Codecov
-- **🔒 Security**: Scans for security vulnerabilities with Bandit and Safety
-- **⚡ Performance**: Validates that distance calculations are fast enough
-- **📚 Documentation**: Checks docstring style and required files
-- **🔧 Build**: Verifies all imports and demo scripts compile correctly
+- **Code Quality**: Runs flake8 linting to ensure PEP 8 compliance
+- **Testing**: Executes all 32 tests across Python 3.8, 3.9, 3.10, 3.11
+- **Coverage**: Generates test coverage reports and uploads to Codecov
+- **Security**: Scans for security vulnerabilities with Bandit and Safety
+- **Performance**: Validates that distance calculations are fast enough
+- **Documentation**: Checks docstring style and required files
+- **Build**: Verifies all imports and demo scripts compile correctly
 
 ### Pipeline Status
 
 The pipeline runs automatically and provides:
-- ✅ **Green checkmarks** when everything passes
-- ❌ **Red X marks** when issues are found
-- 📈 **Coverage reports** showing test coverage percentage
-- 🔍 **Detailed logs** for debugging failed tests
+- **Green checkmarks** when everything passes
+- **Red X marks** when issues are found
+- **Coverage reports** showing test coverage percentage
+- **Detailed logs** for debugging failed tests
 
 ### Local Testing
 
